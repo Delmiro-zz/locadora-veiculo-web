@@ -10,7 +10,7 @@
     
     <ui:define name="corpo">
     	<f:metadata>
-			<o:viewParam name="fabricante" value="#{fabricanteController.fabricante}" />
+			<o:viewParam name="fabricante" value="#{cadastroFabricanteController.fabricante}" />
 		</f:metadata>
     
     	<h1>Novo fabricante</h1>
@@ -20,20 +20,20 @@
 
 	    	<p:toolbar style="margin-top: 20px">
 	    		<p:toolbarGroup>
-	    			<p:commandButton value="Salvar" id="botaoSalvar" action="#{fabricanteController.salvar}" update="frmCadastro"/>
+	    			<p:commandButton value="Salvar" id="botaoSalvar" action="#{cadastroFabricanteController.salvar}" update="frmCadastro"/>
 	    		</p:toolbarGroup>
 	    		<p:toolbarGroup align="right">
-					<p:button value="Pesquisa" />
+					<p:button value="Pesquisa"/>
 				</p:toolbarGroup>
 	    	</p:toolbar>
 	    	
 	    	<p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px"
 	    			columnClasses="rotulo, campo">
 	    		<p:outputLabel value="Código" for="codigo"/>
-	    		<p:inputText id="codigo" size="20" maxlength="20" value="#{fabricanteController.fabricante.codigo}" readonly="true"/>
+	    		<p:inputText id="codigo" size="20" maxlength="20" value="#{cadastroFabricanteController.fabricante.codigo}" readonly="true"/>
 	    		
 	    		<p:outputLabel value="Nome" for="nome"/>
-	    		<p:inputText id="nome" size="60" maxlength="80" value="#{fabricanteController.fabricante.nome}"/>
+	    		<p:inputText id="nome" size="60" maxlength="80" value="#{cadastroFabricanteController.fabricante.nome}"/>
 	    	</p:panelGrid>
     	</h:form>
     </ui:define>
