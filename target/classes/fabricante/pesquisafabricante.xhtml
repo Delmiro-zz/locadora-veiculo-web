@@ -15,7 +15,7 @@
 
 			<p:toolbar style="margin-top: 20px">
 				<p:toolbarGroup>
-					<p:commandButton value="Novo" id="botaoNovo"  />
+					<p:commandButton value="Novo" id="botaoNovo" action="/fabricante/cadastrofabricante.xhtml"/>
 				</p:toolbarGroup>
 			</p:toolbar>
 
@@ -32,7 +32,7 @@
 					<h:outputText value="#{fabricante.nome}" />
 				</p:column>
 				<p:column style="width: 100px; text-align: center">
-					<p:button icon="ui-icon-pencil" title="Editar">
+					<p:button outcome="cadastrofabricante" icon="ui-icon-pencil" title="Editar">
 						<f:param name="fabricante" value="#{fabricante.codigo}" />
 					</p:button>
 					<p:commandButton icon="ui-icon-trash" title="Excluir"
