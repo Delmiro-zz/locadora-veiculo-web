@@ -20,8 +20,7 @@ public class FabricanteDao implements Serializable {
 	}
 
 	public Fabricante buscarPeloCodigo(Long codigo) {
-		Fabricante fabricante = manager.find(Fabricante.class, codigo);
-		return fabricante;
+		return manager.find(Fabricante.class, codigo);
 	}
 
 	public void excluir(Fabricante fabricanteSelecionado) {

@@ -6,16 +6,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="tb_fabricante")
-public class Fabricante {
+@Entity(name = "tb_acessorio")
+public class Acessorio {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="fa_codigo")
+	@Column(name = "ac_codigo")
 	private Long codigo;
-	
-	@Column(name="fa_nome")
-	private String nome;
+
+	@Column(name = "ac_descricao")
+	private String descricao;
 
 	public Long getCodigo() {
 		return codigo;
@@ -25,12 +25,12 @@ public class Fabricante {
 		this.codigo = codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	@Override
@@ -38,7 +38,7 @@ public class Fabricante {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
-		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		return result;
 	}
 
@@ -50,16 +50,16 @@ public class Fabricante {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Fabricante other = (Fabricante) obj;
+		Acessorio other = (Acessorio) obj;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
 		} else if (!codigo.equals(other.codigo))
 			return false;
-		if (nome == null) {
-			if (other.nome != null)
+		if (descricao == null) {
+			if (other.descricao != null)
 				return false;
-		} else if (!nome.equals(other.nome))
+		} else if (!descricao.equals(other.descricao))
 			return false;
 		return true;
 	}
