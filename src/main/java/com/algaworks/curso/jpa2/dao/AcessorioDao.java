@@ -27,6 +27,10 @@ public class AcessorioDao implements Serializable {
 
 	@SuppressWarnings("unchecked")
 	public List<Acessorio> buscarTodos() {
-		return manager.createQuery("from Acessorio").getResultList();
+		return manager.createQuery("from tb_acessorio").getResultList();
+	}
+
+	public Acessorio buscarPeloCodigo(Long codigo) {
+		return manager.find(Acessorio.class, codigo);
 	}
 }
