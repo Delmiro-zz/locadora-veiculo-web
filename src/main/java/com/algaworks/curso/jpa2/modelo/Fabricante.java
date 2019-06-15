@@ -6,15 +6,15 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity(name="tb_fabricante")
+@Entity(name = "tb_fabricante")
 public class Fabricante {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="fa_codigo")
+	@Column(name = "fa_codigo")
 	private Long codigo;
-	
-	@Column(name="fa_nome")
+
+	@Column(name = "fa_nome")
 	private String nome;
 
 	public Long getCodigo() {

@@ -8,19 +8,19 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity(name="tb_modelo_carro")
+@Entity(name = "tb_modelo_carro")
 public class ModeloCarro {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="mc_codigo")
+	@Column(name = "mc_codigo")
 	private Long codigo;
-	
-	@Column(name="mc_descricao")
+
+	@Column(name = "mc_descricao")
 	private String descricao;
 
 	@ManyToOne
-	@JoinColumn(name="mc_codigo_fabricante")
+	@JoinColumn(name = "mc_codigo_fabricante")
 	private Fabricante fabricante;
 
 	public Long getCodigo() {

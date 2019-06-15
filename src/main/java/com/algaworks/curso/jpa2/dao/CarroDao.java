@@ -27,4 +27,8 @@ public class CarroDao implements Serializable {
 	public List<Carro> buscarTodos() {
 		return manager.createQuery("from tb_carro").getResultList();
 	}
+
+	public Carro buscarPeloCodigo(Long codigo) {
+		return manager.find(Carro.class, codigo);
+	}
 }
