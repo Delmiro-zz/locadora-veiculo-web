@@ -28,7 +28,7 @@ public class ModeloCarroService implements Serializable {
 	}
 
 	@Transactional
-	public void excluir(ModeloCarro modeloCarroSelecionado) {
+	public void excluir(ModeloCarro modeloCarroSelecionado) throws NegocioException{
 		this.modeloCarroDao.excluir(modeloCarroSelecionado);
 	}
 

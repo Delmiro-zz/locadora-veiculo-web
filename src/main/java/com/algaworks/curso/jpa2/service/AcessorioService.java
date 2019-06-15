@@ -25,7 +25,7 @@ public class AcessorioService implements Serializable {
 	}
 
 	@Transactional
-	public void excluir(Acessorio acessorioSelecionado) {
+	public void excluir(Acessorio acessorioSelecionado) throws NegocioException{
 		this.acessorioDao.excluir(acessorioSelecionado);
 	}
 

@@ -14,11 +14,11 @@
     		<p:messages id="messages" autoUpdate="true" closable="true" />
 	    	<p:toolbar style="margin-top: 20px">
 	    		<p:toolbarGroup>
-	    			<p:commandButton value="Novo" id="botaoNovo" action="/modeloCarro/CadastroModeloCarro.xhtml"/>
+	    			<p:commandButton value="Novo" id="botaoNovo" action="/modelocarro/cadastromodelocarro.xhtml"/>
 	    		</p:toolbarGroup>
 	    	</p:toolbar>
 	    	
-	    	<p:dataTable id="modelosCarroTable" value="#{pesquisaModeloCarroBean.modelosCarro}" var="modeloCarro"
+	    	<p:dataTable id="modelosCarroTable" value="#{pesquisaModeloCarroController.modelosCarro}" var="modeloCarro"
 		    		style="margin-top: 20px" emptyMessage="Nenhum modelo de carro encontrado." rows="20"
 		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom">
 	    		<p:column headerText="Código" style="text-align: center; width: 100px">
@@ -31,17 +31,17 @@
 	    			<h:outputText value="#{modeloCarro.fabricante.nome}" />
 	    		</p:column>
 	    		<p:column style="width: 100px; text-align: center">
-		    		<p:button outcome="CadastroModeloCarro" icon="ui-icon-pencil" title="Editar">
+		    		<p:button outcome="cadastromodelocarro" icon="ui-icon-pencil" title="Editar">
 		    			<f:param name="modeloCarro" value="#{modeloCarro.codigo}"/>
 		    		</p:button>
 		    		<p:commandButton icon="ui-icon-trash" title="Excluir" oncomplete="confirmacaoExclusao.show()"
 							process="@this" update=":frmPesquisa:confirmacaoExclusaoDialog">
-						<f:setPropertyActionListener target="#{pesquisaModeloCarroBean.modeloCarroSelecionado}" value="#{modeloCarro}" />
+						<f:setPropertyActionListener target="#{pesquisaModeloCarroController.modeloCarroSelecionado}" value="#{modeloCarro}" />
 					</p:commandButton>
 		    	</p:column>
 		   	</p:dataTable>
 		   	<p:confirmDialog id="confirmacaoExclusaoDialog" widgetVar="confirmacaoExclusao"
-	        		message="Tem certeza que deseja excluir o modelo #{pesquisaModeloCarroBean.modeloCarroSelecionado.descricao}?"  
+	        		message="Tem certeza que deseja excluir o modelo #{pesquisaModeloCarroController.modeloCarroSelecionado.descricao}?"  
 	                header="Exclusão de modelo de carro" severity="alert">
 	        	<p:button value="Não" onclick="confirmacaoExclusao.hide(); return false;" />
 	        	<p:commandButton value="Sim" update=":frmPesquisa:modelosCarroTable"
