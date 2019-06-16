@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import com.algaworks.curso.jpa2.exception.NegocioException;
+import com.algaworks.curso.jpa2.modelo.Acessorio;
 import com.algaworks.curso.jpa2.modelo.Carro;
 import com.algaworks.curso.jpa2.service.CarroService;
 import com.algaworks.curso.jpa2.util.jsf.FacesUtil;
@@ -33,18 +34,27 @@ public class PesquisaCarroController implements Serializable {
 		try {
 			carroService.excluir(carroSelecionado);
 			this.carros.remove(carroSelecionado);
-			FacesUtil.addSuccessMessage("Carro " + carroSelecionado.getModeloCarro().getDescricao() + " excluído com sucesso.");
+			FacesUtil.addSuccessMessage(
+					"Carro " + carroSelecionado.getModeloCarro().getDescricao() + " excluído com sucesso.");
 		} catch (NegocioException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
 	}
-
+	
+	public void buscarCarroComAcessorios(){
+		this.carroSelecionado = carroService.buscarCarroComAcessorios(carroSelecionado.getCodigo());
+	}
+	
 	public List<Carro> getCarros() {
 		return carros;
 	}
 
 	public Carro getCarroSelecionado() {
 		return carroSelecionado;
+	}
+
+	public void setCarroSelecionado(Carro carroSelecionado) {
+		this.carroSelecionado = carroSelecionado;
 	}
 
 }

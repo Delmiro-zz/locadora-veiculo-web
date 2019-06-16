@@ -37,8 +37,11 @@
 	    			<h:outputText value="#{carro.valorDiaria}" />
 	    		</p:column>
 		    	<p:column headerText="Acessórios" style="width: 100px; text-align: center">
-	    			<p:commandButton icon="ui-icon-extlink" title="Acessórios" action="#{pesquisaCarroController.buscarCarroComAcessorios}"
-	    					process="@this" oncomplete="mostraAcessorios.show()" update=":frmPesquisa:mostraAcessoriosDialog">
+	    			<p:commandButton 
+	    				    icon="ui-icon-extlink" title="Acessórios" 
+	    					process="@this" 
+	    					oncomplete="mostraAcessorios.show()" 
+	    					update=":frmPesquisa:mostraAcessoriosDialog">
 	    				<f:setPropertyActionListener target="#{pesquisaCarroController.carroSelecionado}" value="#{carro}" />
 	    			</p:commandButton>
 	    		</p:column>

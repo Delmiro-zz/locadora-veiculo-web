@@ -34,4 +34,8 @@ public class CarroService implements Serializable {
 		return this.carroDao.buscarTodos();
 	}
 
+	public Carro buscarCarroComAcessorios(Long codigo) {
+		return this.carroDao.buscarCarroComAcessorios(codigo);
+	}
+
 }
