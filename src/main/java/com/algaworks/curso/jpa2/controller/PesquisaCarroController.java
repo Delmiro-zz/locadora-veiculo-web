@@ -7,7 +7,6 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import com.algaworks.curso.jpa2.exception.NegocioException;
-import com.algaworks.curso.jpa2.modelo.Acessorio;
 import com.algaworks.curso.jpa2.modelo.Carro;
 import com.algaworks.curso.jpa2.service.CarroService;
 import com.algaworks.curso.jpa2.util.jsf.FacesUtil;
