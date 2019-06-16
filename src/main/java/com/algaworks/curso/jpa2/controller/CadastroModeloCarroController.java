@@ -2,11 +2,14 @@ package com.algaworks.curso.jpa2.controller;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import com.algaworks.curso.jpa2.Enum.Categoria;
 import com.algaworks.curso.jpa2.exception.NegocioException;
 import com.algaworks.curso.jpa2.modelo.Fabricante;
 import com.algaworks.curso.jpa2.modelo.ModeloCarro;
@@ -29,10 +32,13 @@ public class CadastroModeloCarroController implements Serializable {
 	private List<Fabricante> fabricantes = new ArrayList<Fabricante>();
 
 	private ModeloCarro modeloCarro = new ModeloCarro();
+	
+	private List<Categoria> categorias;
 
 	@PostConstruct
 	public void init() {
 		setFabricantes(fabricanteService.buscarTodos());
+		this.categorias = Arrays.asList(Categoria.values());
 	}
 
 	public void salvar() {
@@ -65,4 +71,12 @@ public class CadastroModeloCarroController implements Serializable {
 		this.modeloCarro = modeloCarro;
 	}
 
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+	
 }

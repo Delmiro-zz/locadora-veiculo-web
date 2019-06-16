@@ -33,11 +33,19 @@
 	    		<p:inputText id="codigo" size="20" maxlength="20" value="#{cadastroModeloCarroController.modeloCarro.codigo}" readonly="true"/>
 	    		
 	    		<p:outputLabel value="Fabricante" for="fabricante"/>
-	    		<p:selectOneMenu id="fabricante" value="#{cadastroModeloCarroController.modeloCarro.fabricante}">
+	    		<p:selectOneMenu style="width:189px" id="fabricante" value="#{cadastroModeloCarroController.modeloCarro.fabricante}">
 	    			<f:selectItem itemLabel="Selecione o fabricante" />
 	    			<f:selectItems value="#{cadastroModeloCarroController.fabricantes}" var="fabricante" 
 						itemLabel="#{fabricante.nome}" itemValue="#{fabricante}"/>
 	    		</p:selectOneMenu>
+	    		
+	    		<p:outputLabel value="Categoria" for="categoria"/>
+	    		<p:selectOneMenu id="categoria" value="#{cadastroModeloCarroController.modeloCarro.categoria}">
+	    			<f:selectItem itemLabel="Selecione a categoria" />
+	    			<f:selectItems value="#{cadastroModeloCarroController.categorias}" var="categoria" 
+						itemLabel="#{categoria}" itemValue="#{categoria}"/>
+	    		</p:selectOneMenu>
+	    		
 	    		
 	    		<p:outputLabel value="Modelo" for="modelo"/>
 	    		<p:inputText id="modelo" size="60" maxlength="80" value="#{cadastroModeloCarroController.modeloCarro.descricao}"/>

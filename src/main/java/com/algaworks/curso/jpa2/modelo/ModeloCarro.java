@@ -2,11 +2,15 @@ package com.algaworks.curso.jpa2.modelo;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import com.algaworks.curso.jpa2.Enum.Categoria;
 
 @Entity(name = "tb_modelo_carro")
 public class ModeloCarro {
@@ -22,6 +26,10 @@ public class ModeloCarro {
 	@ManyToOne
 	@JoinColumn(name = "mc_codigo_fabricante")
 	private Fabricante fabricante;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "mc_categoria")
+	private Categoria categoria;
 
 	public Long getCodigo() {
 		return codigo;
@@ -47,10 +55,19 @@ public class ModeloCarro {
 		this.fabricante = fabricante;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
+
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((categoria == null) ? 0 : categoria.hashCode());
 		result = prime * result + ((codigo == null) ? 0 : codigo.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((fabricante == null) ? 0 : fabricante.hashCode());
@@ -66,6 +83,8 @@ public class ModeloCarro {
 		if (getClass() != obj.getClass())
 			return false;
 		ModeloCarro other = (ModeloCarro) obj;
+		if (categoria != other.categoria)
+			return false;
 		if (codigo == null) {
 			if (other.codigo != null)
 				return false;
