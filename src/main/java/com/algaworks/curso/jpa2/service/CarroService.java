@@ -38,4 +38,12 @@ public class CarroService implements Serializable {
 		return this.carroDao.buscarCarroComAcessorios(codigo);
 	}
 
+	public List<Carro> buscarCarrosComPaginacao(int first, int pageSize) {
+		return this.carroDao.buscarCarroComPaginacao(first, pageSize);
+	}
+
+	public Long quantidadeDeCarroNoBanco() {
+		return this.carroDao.quantidadeDeCarroNoBanco();
+	}
+
 }

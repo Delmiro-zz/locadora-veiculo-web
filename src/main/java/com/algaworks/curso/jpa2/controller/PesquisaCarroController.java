@@ -7,6 +7,7 @@ import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import com.algaworks.curso.jpa2.exception.NegocioException;
+import com.algaworks.curso.jpa2.lazymodel.LazyCarroDataModel;
 import com.algaworks.curso.jpa2.modelo.Carro;
 import com.algaworks.curso.jpa2.service.CarroService;
 import com.algaworks.curso.jpa2.util.jsf.FacesUtil;
@@ -24,9 +25,11 @@ public class PesquisaCarroController implements Serializable {
 	@Inject
 	private CarroService carroService;
 
+	private LazyCarroDataModel lazyCarros;
+
 	@PostConstruct
 	public void init() {
-		this.carros = carroService.buscarTodos();
+		this.lazyCarros = new LazyCarroDataModel(carroService);
 	}
 
 	public void excluir() {
@@ -39,11 +42,11 @@ public class PesquisaCarroController implements Serializable {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
 	}
-	
-	public void buscarCarroComAcessorios(){
+
+	public void buscarCarroComAcessorios() {
 		this.carroSelecionado = carroService.buscarCarroComAcessorios(carroSelecionado.getCodigo());
 	}
-	
+
 	public List<Carro> getCarros() {
 		return carros;
 	}
@@ -54,6 +57,14 @@ public class PesquisaCarroController implements Serializable {
 
 	public void setCarroSelecionado(Carro carroSelecionado) {
 		this.carroSelecionado = carroSelecionado;
+	}
+
+	public LazyCarroDataModel getLazyCarros() {
+		return lazyCarros;
+	}
+
+	public void setLazyCarros(LazyCarroDataModel lazyCarros) {
+		this.lazyCarros = lazyCarros;
 	}
 
 }

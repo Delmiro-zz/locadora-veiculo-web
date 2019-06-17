@@ -37,4 +37,16 @@ public class CarroDao implements Serializable {
 				.setParameter(1, codigo)
 				.getSingleResult();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Carro> buscarCarroComPaginacao(int first, int pageSize) {
+		return manager.createQuery("from tb_carro")
+				.setFirstResult(first)
+				.setMaxResults(pageSize)
+				.getResultList();
+	}
+
+	public Long quantidadeDeCarroNoBanco() {
+		return manager.createQuery("select count(c) from tb_carro c", Long.class).getSingleResult();
+	}
 }
