@@ -1,6 +1,7 @@
 package com.algaworks.curso.jpa2.modelo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity(name = "tb_aluguel")
 public class Aluguel {
@@ -24,13 +27,21 @@ public class Aluguel {
 	private BigDecimal valorTotal;
 
 	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "codigo_apolice_seguro")
+	@JoinColumn(name = "al_codigo_apolice_seguro")
 	private ApoliceSeguro apoliceSeguro;
 
 	@ManyToOne
-	@JoinColumn(name = "codigo_carro")
+	@JoinColumn(name = "al_codigo_carro")
 	private Carro carro;
-
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JoinColumn(name = "al_data_pedido")
+	private Date dataPedido;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@JoinColumn(name = "al_data_entrega")
+	private Date dataEntrega;
+	
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -61,6 +72,22 @@ public class Aluguel {
 
 	public void setCarro(Carro carro) {
 		this.carro = carro;
+	}
+	
+	public Date getDataPedido() {
+		return dataPedido;
+	}
+
+	public void setDataPedido(Date dataPedido) {
+		this.dataPedido = dataPedido;
+	}
+
+	public Date getDataEntrega() {
+		return dataEntrega;
+	}
+
+	public void setDataEntrega(Date dataEntrega) {
+		this.dataEntrega = dataEntrega;
 	}
 
 	@Override

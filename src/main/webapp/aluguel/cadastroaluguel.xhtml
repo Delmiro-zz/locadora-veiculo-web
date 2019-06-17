@@ -32,6 +32,12 @@
 	    		
 	    		<p:outputLabel value="Valor total" for="valorTotal"/>
 	    		<p:inputText id="valorTotal" size="20" maxlength="80" value="#{cadastroAluguelController.aluguel.valorTotal}"/>
+	    		
+	    		<p:outputLabel value="Data Pedido" for="dataPedido"/>
+	    		<p:calendar id="dataPedido" size="20" pattern="dd/MM/yyyy HH:mm" stepMinute="10" value="#{cadastroAluguelController.aluguel.dataPedido}"/>
+	    		
+	    		<p:outputLabel value="Data Entrega" for="dataEntrega"/>
+	    		<p:calendar id="dataEntrega" size="20" pattern="dd/MM/yyyy HH:mm" stepMinute="10" value="#{cadastroAluguelController.aluguel.dataEntrega}"/>
 	    	</p:panelGrid>
 	    	
 	    	<h:outputText value="Dados da apólice de seguro" style="font-size: 18px; display: block; margin-top: 20px"/>
