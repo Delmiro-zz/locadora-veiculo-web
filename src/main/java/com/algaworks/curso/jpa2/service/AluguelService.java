@@ -1,12 +1,15 @@
 package com.algaworks.curso.jpa2.service;
 
 import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
 import com.algaworks.curso.jpa2.dao.AluguelDao;
 import com.algaworks.curso.jpa2.exception.NegocioException;
 import com.algaworks.curso.jpa2.modelo.Aluguel;
+import com.algaworks.curso.jpa2.modelo.ModeloCarro;
 import com.algaworks.curso.jpa2.util.jpa.Transactional;
 
 public class AluguelService implements Serializable {
@@ -23,5 +26,20 @@ public class AluguelService implements Serializable {
 		}
 		this.aluguelDao.salvar(aluguel);
 	}
+
+	@Transactional
+	public void excluir(Aluguel aluguelSelecionado) throws NegocioException{
+		if(aluguelSelecionado == null) {
+			throw new NegocioException("Não há aluguel selecionado para exclusão");
+		}
+		this.aluguelDao.excluir(aluguelSelecionado);
+	}
 	
+	public List<Aluguel> buscarTodos() {
+		return this.aluguelDao.buscarTodos();
+	}
+
+	public List<Aluguel> buscarPorDataDeEntregaEModeloCarro(Date dataEntrega, ModeloCarro modeloCarro) {
+		return this.aluguelDao.buscarPorDataDeEntregaEModeloCarro(dataEntrega, modeloCarro);
+	}
 }
