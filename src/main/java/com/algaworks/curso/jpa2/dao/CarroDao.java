@@ -40,7 +40,7 @@ public class CarroDao implements Serializable {
 
 	@SuppressWarnings("unchecked")
 	public List<Carro> buscarCarroComPaginacao(int first, int pageSize) {
-		return manager.createQuery("from tb_carro")
+		return manager.createQuery("from tb_carro c join fetch c.modeloCarro")
 				.setFirstResult(first)
 				.setMaxResults(pageSize)
 				.getResultList();
